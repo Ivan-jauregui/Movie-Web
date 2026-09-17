@@ -1,0 +1,49 @@
+<form [formGroup]="form" (submit)="save()" class=" bg-gray-100 p-6 w-80 rounded-lg">
+    
+    <!--Nombre-->
+    <fieldset class="flex flex-col gap-2">
+        <label for="" class="font-semibold">Nombre Pelicula</label>
+        <input type="text" formControlName="name" class="bg-white p-2 ">
+        @if(form.get('name')?.touched && form.get('name')?.hasError('required') ){
+            <p class="text-red-500">El nombre es requerido</p>
+        }@else if(form.get('name')?.touched && form.get('name')?.hasError('minlength')){
+            <p class="text-red-500">El nombre debe de tener mas de 2 caracteres</p>
+        }
+    </fieldset>
+
+    <!--Duracion-->
+    <fieldset class="flex flex-col">
+        <label for="" class="font-semibold">Duracion</label>
+        <input type="number" id="minutos" name="minutos" min="0" placeholder="Ej. 45" formControlName="duration" class="bg-white p-2 ">
+         @if(form.get('duration')?.touched && form.get('duration')?.hasError('required') ){
+            <p class="text-red-500">La duracion es requerido</p>
+        }@else if(form.get('duration')?.touched && form.get('duration')?.hasError('min')){
+            <p class="text-red-500">La duracion debe ser como minimo 60m</p>
+        }
+    </fieldset>
+
+    <!--Director-->
+    <fieldset class="flex flex-col">
+        <label for="" class="font-semibold" >Director</label>
+        <input type="text" formControlName="director" class="bg-white p-2 ">
+         @if(form.get('director')?.touched && form.get('director')?.hasError('required') ){
+            <p class="text-red-500">El director es requerido</p>
+        }@else if(form.get('director')?.touched && form.get('director')?.hasError('minlength')){
+            <p class="text-red-500">El director debe de tener mas de 2 caracteres</p>
+        }
+    </fieldset>
+
+    <!--Img-->
+     <fieldset class="flex flex-col">
+        <label for="" class="font-semibold" >Imagen </label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)">
+         @if(form.get('img')?.touched && form.get('img')?.invalid ){
+            <p class="text-red-500">la imagen es requerida</p>
+        }
+    </fieldset>
+
+    <!--Btn Save-->
+    <div class=" flex w-full justify-center items-center">
+            <button type="submit" [disabled]="form.invalid" class= " w-full mt-4 bg-blue-500 text-white font-bold p-2 rounded-md">Crear</button>
+    </div>
+</form>
