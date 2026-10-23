@@ -1,0 +1,29 @@
+{
+    "publications": [
+      {
+        "id": 1,
+        "title": "Controlador MIDI Novation",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRj9J798aP5L4oObFhPl_bOHxaLWpEKg5j7LNYebjvbQ&s",
+        "description": "Controlador MIDI de 49 teclas en perfecto estado.",
+        "price": 250.00,
+        "category": {
+          "id": 3,
+          "name": "Instrumentos Musicales"
+        },
+        "createdAt": "2026-10-23T19:55:00.000Z"
+      },
+      {
+        "id": 2,
+        "title": "Auriculares de Estudio",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0QulzrYv6cjRP4wj9ukATNsfGpkTczIgrbRAdeLZG6w&s=10",
+        "description": "Auriculares cerrados profesionales para monitoreo.",
+        "price": 120.50,
+        "category": {
+          "id": 1,
+          "name": "Audio"
+        },
+        "createdAt": "2026-10-22T14:30:00.000Z"
+      }
+    ]
+  }
+  

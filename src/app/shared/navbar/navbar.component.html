@@ -1,15 +1,36 @@
-<header class="p-5 bg-gray-100">
-    <nav class="flex justify-between">
-        <div class="ml-5">
-            <h2><a routerLink="">MovieApp</a></h2>
-        </div>
+<header class="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <div class="flex-shrink-0">
+        <a routerLink="/" class="text-2xl font-extrabold text-[#212121] hover:opacity-90 transition-opacity">
+          MUVI<span class="text-[#A31533]">X</span>
+        </a>
+      </div>
+  
 
-        <div>
-            <ul class="flex gap-3 mr-10 list-none">
-                <li><a routerLink="">Home</a></li>
-                <li><a routerLink="/movie/catalog">Nuestro Catalogo</a></li>
-                <li><a routerLink="/movie/create">Crear Pelicula</a></li>
-            </ul>
-        </div>
+      <div class="flex items-center gap-6 sm:gap-8">
+        <ul class="flex items-center gap-6 list-none m-0 p-0 text-sm font-semibold">
+          <li>
+            <a routerLink="/how-it-works" 
+               routerLinkActive="text-[#A31533]" 
+               class="text-[#212121] hover:text-[#A31533] transition-colors duration-200">
+              Cómo funciona
+            </a>
+          </li>
+          <li>
+            <a routerLink="/muvix/publications" 
+               routerLinkActive="text-[#A31533]" 
+               class="text-[#212121] hover:text-[#A31533] transition-colors duration-200">
+              Explorar
+            </a>
+          </li>
+        </ul>
+  
+        <a routerLink="/muvix/publications/create" 
+           class="bg-[#A31533] hover:bg-[#821028] text-white text-sm font-bold px-4 py-2.5 rounded-lg shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#A31533] focus:ring-offset-2">
+          + Crear liquidación
+        </a>
+      </div>
+  
     </nav>
-</header>
+  </header>
