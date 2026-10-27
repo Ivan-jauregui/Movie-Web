@@ -1,0 +1,181 @@
+
+<main class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Contenedor Principal en Dos Columnas (Sidebar + Catálogo) -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      
+      <!-- 1. BARRA LATERAL DE FILTROS (Aside Semántico) -->
+      <aside class="w-full lg:w-64 flex-shrink-0 space-y-6">
+        
+        <!-- Bloque: Categorías -->
+        <nav class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm" aria-label="Filtro por categorías">
+          <h2 class="text-sm font-bold text-gray-900 mb-4 tracking-tight">Categorías</h2>
+          <ul class="space-y-3">
+            <li>
+              <button class="w-full flex items-center justify-between text-left text-sm font-bold text-rose-600 bg-rose-50/50 px-3 py-2 rounded-lg group">
+                <span>Sofás y Sillones</span>
+                <span class="bg-rose-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">42</span>
+              </button>
+            </li>
+            <li>
+              <button class="w-full flex items-center justify-between text-left text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1 group">
+                <span>Mesas</span>
+                <span class="text-gray-400 text-xs bg-gray-100 px-2 py-0.5 rounded-full group-hover:bg-gray-200">18</span>
+              </button>
+            </li>
+            <li>
+              <button class="w-full flex items-center justify-between text-left text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1 group">
+                <span>Sillas</span>
+                <span class="text-gray-400 text-xs bg-gray-100 px-2 py-0.5 rounded-full group-hover:bg-gray-200">56</span>
+              </button>
+            </li>
+            <li>
+              <button class="w-full flex items-center justify-between text-left text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1 group">
+                <span>Camas</span>
+                <span class="text-gray-400 text-xs bg-gray-100 px-2 py-0.5 rounded-full group-hover:bg-gray-200">12</span>
+              </button>
+            </li>
+            <li>
+              <button class="w-full flex items-center justify-between text-left text-sm font-medium text-gray-600 hover:text-gray-900 px-3 py-1 group">
+                <span>Almacenaje</span>
+                <span class="text-gray-400 text-xs bg-gray-100 px-2 py-0.5 rounded-full group-hover:bg-gray-200">24</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Bloque: Tipo -->
+        <fieldset class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm space-y-3">
+          <legend class="text-sm font-bold text-gray-900 mb-2 tracking-tight">Tipo</legend>
+          <label class="flex items-center gap-3 text-sm text-gray-600 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 border-gray-300">
+            <span>Lotes / Combos</span>
+          </label>
+          <label class="flex items-center gap-3 text-sm text-gray-900 font-medium cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 border-gray-300">
+            <span>Artículos Individuales</span>
+          </label>
+        </fieldset>
+
+        <!-- Bloque: Estado -->
+        <fieldset class="bg-white rounded-xl border border-gray-100 p-5 shadow-sm space-y-3">
+          <legend class="text-sm font-bold text-gray-900 mb-2 tracking-tight">Estado</legend>
+          <label class="flex items-center gap-3 text-sm text-gray-900 font-medium cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 border-gray-300">
+            <span>Como Nuevo</span>
+          </label>
+          <label class="flex items-center gap-3 text-sm text-gray-600 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 border-gray-300">
+            <span>Buen Estado</span>
+          </label>
+          <label class="flex items-center gap-3 text-sm text-gray-600 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 border-gray-300">
+            <span>Con Detalles</span>
+          </label>
+        </fieldset>
+      </aside>
+
+      <!-- 2. SECCIÓN DEL CATÁLOGO -->
+      <section class="flex-grow" aria-labelledby="catalog-title">
+        
+        <!-- Encabezado del catálogo (Título + Filtro Ordenar) -->
+        <header class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <h1 id="catalog-title" class="text-3xl font-extrabold text-gray-900 tracking-tight">Explorar Catálogo</h1>
+          
+          <div class="flex items-center gap-2 self-end sm:self-auto">
+            <label for="sort-by" class="text-xs text-gray-500 font-medium">Ordenar por:</label>
+            <select id="sort-by" class="text-sm font-medium text-gray-800 bg-transparent border-none focus:ring-0 cursor-pointer pr-8 py-1">
+              <option selected>Mayor Descuento</option>
+              <option>Menor Precio</option>
+              <option>Más Recientes</option>
+            </select>
+          </div>
+        </header>
+
+        <!-- Grilla de tarjetas de productos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          @for (item of publications(); track item.id) {
+            <!-- Tarjeta de Producto con el estilo de la imagen -->
+            <article 
+            class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col group relative"
+            (click)="viewDetails(item.id!)">
+              
+              <!-- Contenedor de Imagen con tags superpuestos -->
+              <figure class="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                <img [src]="getMainImageUrl(item)"
+                  class="w-full h-full object-cover">
+                <!-- Tag Flotante 1: Descuento Hardcodeado (Calculable si tenés precio original) -->
+                <span class="absolute top-3 left-3 bg-black text-white text-xs font-black px-2 py-0.5 rounded">
+                  -50%
+                </span>
+
+                <!-- Tag Flotante 2: Urgencia / Stock -->
+                <span class="absolute top-3 right-3 bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                  <span class="w-1 h-1 bg-white rounded-full animate-ping"></span>
+                  ¡Solo queda 1!
+                </span>
+              </figure>
+
+              <!-- Información del Producto -->
+              <div class="p-5 flex flex-col flex-grow">
+                
+                <!-- Fila: Título e Insignia de Estado -->
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <h2 class="text-base font-bold text-gray-900 line-clamp-2 leading-tight group-hover:text-rose-600 transition-colors">
+                    {{ item.title }}
+                  </h2>
+                  <span class="bg-gray-100 text-gray-500 text-[10px] font-medium px-2 py-0.5 rounded whitespace-nowrap border border-gray-200/50">
+                    Como Nuevo
+                  </span>
+                </div>
+
+                <!-- Descripción corta -->
+                <p class="text-xs text-gray-500 line-clamp-2 mb-4 flex-grow">
+                  {{ item.description }}
+                </p>
+
+                <!-- Bloque de Precios (Actual vs Tachado) -->
+                <div class="flex items-baseline gap-2 mb-3">
+                  <span class="text-2xl font-black text-rose-600">${{ item.price | number:'1.0-0' }}</span>
+                  <!-- Simulación de precio de lista tachado -->
+                  <span class="text-xs text-gray-400 line-through">${{ (item.price * 2) | number:'1.0-0' }}</span>
+                </div>
+
+                <!-- Fila inferior: Vistas y Tag de Demanda -->
+                <div class="flex items-center justify-between text-[10px] text-gray-400 font-medium pb-4 border-b border-gray-100 mb-4">
+                  <span>Vistas hoy: 45</span>
+                  <span class="text-rose-600 font-bold uppercase tracking-wider">Alta demanda</span>
+                </div>
+
+                <!-- Botones de Acción (Estilo doble botón de la captura) -->
+                <div class="grid grid-cols-2 gap-3 mt-auto">
+                  <button class="bg-red-950 hover:bg-red-900 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors shadow-sm">
+                    Comprar Ya
+                  </button>
+                  <button class="bg-white hover:bg-rose-50 text-rose-600 border border-rose-200 text-xs font-bold py-2.5 px-4 rounded-lg transition-colors">
+                    Hacer Oferta
+                  </button>
+                </div>
+              </div>
+
+            </article>
+          } @empty {
+            <!-- Estado vacío -->
+            <div class="col-span-full bg-white rounded-xl border border-gray-200 p-12 text-center">
+              <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+              <h3 class="mt-4 text-lg font-bold text-gray-900">No hay publicaciones</h3>
+              <p class="mt-2 text-sm text-gray-500">No se encontraron productos con estos filtros.</p>
+            </div>
+          }
+
+        </div>
+
+        <!-- 3. COMPONENTE DE PAGINACIÓN (Fiel al figma) -->
+        <nav class="mt-10 flex justify-center items-center gap-1 text-sm font-medium text-gray-500" aria-label="Paginación de resultados">
+          <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-400">
+            &lt;
+          </button>

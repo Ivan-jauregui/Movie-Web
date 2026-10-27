@@ -1,0 +1,82 @@
+<main class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Botón para volver al catálogo -->
+    <div class="mb-8">
+      <button class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-rose-600 transition-colors duration-200 group"
+      routerLink="/catalog">
+        <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Volver al catálogo
+      </button>
+    </div>
+
+    <!-- Contenedor Principal del Detalle -->
+    <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="flex flex-col lg:flex-row">
+        
+        <!-- Columna Izquierda: Imagen del Producto -->
+        <div class="w-full lg:w-1/2 bg-gray-100/50 flex items-center justify-center p-6 sm:p-8">
+          <div class="aspect-square w-full max-w-lg overflow-hidden rounded-lg bg-white shadow-inner border border-gray-100">
+            <img 
+              [src]="getMainImageUrl()" 
+              [alt]="publication()?.title" 
+              class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Información y Datos -->
+        <div class="w-full lg:w-1/2 p-8 sm:p-12 flex flex-col justify-between">
+          <div class="space-y-6">
+            
+            <!-- Categoría y Fecha de Creación -->
+            <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-600">
+                {{ publication()?.category?.name }}
+              </span>
+              <span class="text-xs text-gray-400 font-medium">
+                Publicado el {{ publication()?.createdAt | date:'dd/MM/yyyy' }}
+              </span>
+            </div>
+
+            <!-- Título del Producto -->
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+              {{ publication()?.title }}
+            </h1>
+
+            <!-- Precio -->
+            <div class="mt-4">
+              <p class="text-3xl font-black text-rose-600 tracking-tight">
+                {{ publication()?.price | currency:'USD':'symbol':'1.2-2' }}
+              </p>
+            </div>
+
+            <!-- Descripción -->
+            <div class="space-y-2">
+              <h2 class="text-sm font-bold text-gray-900 tracking-tight uppercase">Descripción del producto</h2>
+              <p class="text-base text-gray-600 leading-relaxed">
+                {{ publication()?.description }}
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Acciones del Detalle -->
+          <div class="mt-10 pt-6 border-t border-gray-100 space-y-3">
+            <button class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-center text-sm tracking-wide">
+              Añadir al carrito
+            </button>
+            <button class="w-full bg-white hover:bg-gray-50 text-gray-700 font-semibold py-3 px-4 border border-gray-200 rounded-xl transition-colors duration-200 text-center text-sm">
+              Preguntar al vendedor
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
