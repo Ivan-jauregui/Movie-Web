@@ -1,24 +1,31 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PublicationService } from '../../../../core/services/publication/publication-service';
 import { Publication } from '../../../../core/models/publicacion';
 import { CommonModule } from '@angular/common';
 import { AssociatedPublicationCard } from '../../components/associated-publication-card/associated-publication-card.component';
+import { User } from '../../../../core/models/user';
+import { UserService } from '../../../profile/pages/service/user.service';
+import { SellerCard } from '../../components/seller-card/seller-card.component';
+
 
 @Component({
   selector: 'app-publication-detail',
-  imports: [CommonModule, RouterLink, AssociatedPublicationCard],
+  imports: [CommonModule, RouterLink, AssociatedPublicationCard,SellerCard],
   templateUrl: './publication-detail.component.html',
   styleUrl: './publication-detail.component.css'
 })
-export class PublicationDetailComponent {
+export class PublicationDetailComponent implements OnInit{
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private publicationService = inject(PublicationService);
+  private userService = inject(UserService);
 
   publication = signal<Publication | null>(null);
   associatedPublications = signal<Publication[]>([]);
   selectedImage = signal<string | null>(null)
+
+  user = signal<User | null>(null);
 
 
   defaultImg = computed(()=>{
@@ -46,12 +53,13 @@ export class PublicationDetailComponent {
     this.publicationService.getById(id).subscribe({
       next: (data) => {
         this.publication.set(data);
+        this.loadUser(this.publication()?.userId!)
         if (this.publication()?.type == "LOTE") {
           this.loadAssociatedPublications(this.publication()!)
         }
       },
       error: (err) => {
-        console.error('Error al cargar la publicación:', err);
+        console.error('Error al cargar la publicación: ', err);
         this.publication.set(null);
       }
     });
@@ -67,6 +75,17 @@ export class PublicationDetailComponent {
         console.error("Error al cargar las publicaciones asociadas:", err);
       }
     });
+  }
+
+  loadUser(id:string){
+    this.userService.getById(id).subscribe({
+      next:(data)=>{
+        this.user.set(data);
+      },
+      error:(err)=>{
+        console.log("Error al cargar el usuario: " + err)
+      }
+    })
   }
 
 

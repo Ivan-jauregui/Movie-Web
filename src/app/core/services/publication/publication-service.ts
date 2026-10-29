@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Publication } from '../../models/publicacion';
@@ -18,10 +18,14 @@ export class PublicationService {
   getAll(): Observable<Publication[]> {
     return this.http.get<Publication[]>(`${this.apiUrl}?_embed=images`);
   }
-
-
+  
   getById(id: string): Observable<Publication> {
     return this.http.get<Publication>(`${this.apiUrl}/${id}?_embed=images`);
+  }
+
+  getPublicationsByUser(userId: string): Observable<Publication[]> {
+    const params = new HttpParams().set('userId', userId);
+    return this.http.get<Publication[]>(this.apiUrl, { params });
   }
 
   getPublicationsByBatchId(id: number): Observable<Publication[]> {

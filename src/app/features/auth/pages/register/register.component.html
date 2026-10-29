@@ -1,1 +1,198 @@
-<p>register works!</p>
+<main class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-2xl bg-white p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
+
+        <div class="text-center sm:text-left space-y-1">
+
+            <h1 class="text-2xl font-black text-gray-900 tracking-tight">
+                Crear Cuenta
+            </h1>
+            <p class="text-xs text-gray-400 font-medium leading-relaxed">
+                Unite a la comunidad de liquidación y compra protegida de mobiliario corporativo y de diseño.
+            </p>
+        </div>
+
+        <button type="button"
+            class="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-700 text-xs font-bold py-3 px-4 border border-gray-200 rounded-xl transition-colors duration-200">
+            <svg class="w-4 h-4" viewBox="0 0 24 24">
+                <path fill="#EA4335"
+                    d="M12.24 10.285V14.4h6.887c-.315 1.886-2.135 5.542-6.887 5.542-4.09 0-7.43-3.39-7.43-7.57s3.34-7.57 7.43-7.57c2.33 0 3.89.97 4.78 1.83l3.22-3.11C18.17 1.63 15.42 1 12.24 1A10.996 10.996 0 0 0 1.25 12a10.996 10.996 0 0 0 10.99 11c5.73 0 9.54-4.03 9.54-9.71 0-.65-.07-1.14-.15-1.63h-9.39z" />
+            </svg>
+            Registrarse con Google
+        </button>
+
+
+        <div class="relative flex items-center justify-center">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-100"></div>
+            </div>
+            <span class="relative bg-white px-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                o completá tus datos
+            </span>
+        </div>
+
+
+        <form [formGroup]="form" (ngSubmit)="register()" class="space-y-4">
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label
+                        class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Nombre</label>
+                    <input type="text" formControlName="firstName" placeholder="Ej. Guillermo"
+                        class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                        [class.border-rose-500]="form.get('firstName')?.invalid && form.get('firstName')?.touched" />
+                    @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+                    <p class="text-[11px] font-bold text-rose-600 mt-1">El nombre es requerido.</p>
+                    }
+                </div>
+                <div>
+                    <label
+                        class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Apellido</label>
+                    <input type="text" formControlName="lastName" placeholder="Ej. Rossi"
+                        class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                        [class.border-rose-500]="form.get('lastName')?.invalid && form.get('lastName')?.touched" />
+                    @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+                    <p class="text-[11px] font-bold text-rose-600 mt-1">El apellido es requerido.</p>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Correo
+                    electrónico corporativo / personal</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206">
+                            </path>
+                        </svg>
+                    </span>
+                    <input type="email" formControlName="email" placeholder="nombre@organizacion.com"
+                        class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                        [class.border-rose-500]="form.get('email')?.invalid && form.get('email')?.touched" />
+                </div>
+                @if (form.get('email')?.hasError('email') && form.get('email')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">Ingresá un correo electrónico válido.</p>
+                }@else if (form.get('email')?.hasError('required') && form.get('email')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">El correo es requerido.</p>
+                }
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <label class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider">Teléfono /
+                        WhatsApp</label>
+                    <span class="text-[10px] font-bold text-emerald-600">Para PIN de Retiro</span>
+                </div>
+                <div class="flex gap-2">
+                    <div
+                        class="bg-gray-100 border border-gray-200 rounded-xl px-3 flex items-center text-xs font-bold text-gray-600 select-none">
+                        +54 AR
+                    </div>
+                    <div class="relative flex-1">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                        </span>
+                        <input type="text" formControlName="phoneNumber" placeholder="11 4589 1234 (sin 0 ni 15)"
+                            class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                            [class.border-rose-500]="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched" />
+                    </div>
+                </div>
+                @if (form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">El número de teléfono es requerido.</p>
+                }
+                <p class="text-[10px] text-gray-400 font-medium mt-1">Recibirás un SMS/WhatsApp con el PIN de 4 dígitos
+                    para coordinar el retiro seguro.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label
+                        class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Contraseña</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                </path>
+                            </svg>
+                        </span>
+                        <input type="password" formControlName="password" placeholder="Mínimo 8 caracteres"
+                            class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                            [class.border-rose-500]="form.get('password')?.invalid && form.get('password')?.touched" />
+                    </div>
+                    @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                    <p class="text-[11px] font-bold text-rose-600 mt-1">La contraseña es requerida.</p>
+                    }
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Confirmar
+                        contraseña</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </span>
+                        <input type="password" formControlName="confirmPassword" placeholder="Repetitú contraseña"
+                            class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                            [class.border-rose-500]="passwordsDoNotMatch" />
+                    </div>
+                </div>
+            </div>
+
+
+            @if (passwordsDoNotMatch) {
+            <p class="text-[11px] font-bold text-rose-600 animate-fade-in">
+                Las contraseñas ingresadas no coinciden.
+            </p>
+            }
+
+
+            <div class="flex items-center gap-4 text-[10px] font-bold text-gray-400 border-b border-gray-100 pb-3">
+                <span>Seguridad</span>
+                <span class="text-gray-300">Mayúsculas • Números</span>
+                <span class="text-emerald-600 ml-auto">Verificación unificada</span>
+            </div>
+
+
+            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3">
+                <input type="checkbox" id="terms" class="mt-1 accent-rose-600 rounded cursor-pointer" required />
+                <label for="terms" class="text-[11px] text-gray-500 font-medium leading-relaxed select-none">
+                    Acepto los <span class="text-rose-600 font-bold underline cursor-pointer">Términos de
+                        Servicio</span> y la <span class="text-rose-600 font-bold underline cursor-pointer">Política de
+                        Custodia Escrow</span> de Muvix, incluyendo retención transaccional del 10% en depósito
+                    fiduciario.
+                </label>
+            </div>
+
+            <!-- Botón de Envío Principal -->
+            <button type="submit"
+                class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200 text-center text-sm tracking-wide flex items-center justify-center gap-2 mt-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                </svg>
+                Crear mi Cuenta
+            </button>
+
+        </form>
+
+
+        <div class="text-center pt-2">
+            <p class="text-xs font-medium text-gray-500">
+                ¿Ya tenés una cuenta en la red?
+                <a routerLink="/auth/login" class="text-rose-600 font-bold hover:underline transition-all">Iniciar
+                    sesión</a>
+            </p>
+        </div>
+
+    </div>
+</main>

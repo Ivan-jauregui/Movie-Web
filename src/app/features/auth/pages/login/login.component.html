@@ -1,1 +1,128 @@
-<p>login works!</p>
+<main class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-2xm bg-white p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
+
+      
+        <div class="text-center sm:text-left space-y-1">
+
+            <h1 class="text-2xl font-black text-gray-900 tracking-tight">
+                Iniciar Sesión en Muvix
+            </h1>
+            <p class="text-xs text-gray-400 font-medium leading-relaxed">
+                Ingresá a tu cuenta para gestionar tus liquidaciones, compras y señas en custodia.
+            </p>
+        </div>
+
+
+        <div class="grid grid-cols-1 gap-3">
+            <button type="button"
+                class="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[11px] font-bold text-gray-700 py-2.5 px-3 border border-gray-200 rounded-xl transition-colors duration-200">
+                <svg class="w-4 h-4" viewBox="0 0 24 24">
+                    <path fill="#EA4335"
+                        d="M12.24 10.285V14.4h6.887c-.315 1.886-2.135 5.542-6.887 5.542-4.09 0-7.43-3.39-7.43-7.57s3.34-7.57 7.43-7.57c2.33 0 3.89.97 4.78 1.83l3.22-3.11C18.17 1.63 15.42 1 12.24 1A10.996 10.996 0 0 0 1.25 12a10.996 10.996 0 0 0 10.99 11c5.73 0 9.54-4.03 9.54-9.71 0-.65-.07-1.14-.15-1.63h-9.39z" />
+                </svg>
+                Continuar con Google
+            </button>
+
+        </div>
+
+
+        <div class="relative flex items-center justify-center">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-100"></div>
+            </div>
+            <span class="relative bg-white px-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                o ingresá con tu correo
+            </span>
+        </div>
+
+   
+        <form [formGroup]="form" (ngSubmit)="login()" class="space-y-4">
+
+            <div>
+                <label class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Correo
+                    Electrónico</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input type="email" formControlName="email" placeholder="ejemplo@correo.com"
+                        class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                        [class.border-rose-500]="form.get('email')?.invalid && form.get('email')?.touched" />
+                </div>
+                <!-- Validaciones Específicas de Email -->
+                @if (form.get('email')?.hasError('required') && form.get('email')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">El correo electrónico es requerido.</p>
+                }
+                @if (form.get('email')?.hasError('email') && form.get('email')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">Por favor, ingresá un formato de correo válido.</p>
+                }
+            </div>
+
+
+            <div>
+                <label
+                    class="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Contraseña</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input type="password" formControlName="password" placeholder="••••••••••••"
+                        class="w-full text-sm bg-gray-50/50 border border-gray-200 rounded-xl pl-10 pr-10 py-2.5 outline-none focus:border-rose-500 focus:bg-white transition-all font-medium"
+                        [class.border-rose-500]="form.get('password')?.invalid && form.get('password')?.touched" />
+                  
+                  
+                    <span
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer hover:text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+                @if (form.get('password')?.invalid && form.get('password')?.touched) {
+                <p class="text-[11px] font-bold text-rose-600 mt-1">La contraseña es requerida.</p>
+                }
+            </div>
+
+
+            <div class="flex items-center justify-between text-xs pt-1 select-none">
+                <label class="flex items-center gap-2 text-gray-400 font-medium cursor-pointer">
+                    <input type="checkbox" class="accent-rose-600 rounded" />
+                    Recordarme en este dispositivo
+                </label>
+                <a class="text-rose-600 font-bold hover:underline cursor-pointer">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            </div>
+
+           
+            <button type="submit"
+                class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200 text-sm tracking-wide flex items-center justify-center gap-2">
+                <span>Iniciar Sesión</span>
+                <ng-icon name="heroArrowRightMini" size="20px" class="flex items-center" />
+            </button>
+
+        </form>
+
+        <div class="text-center bg-gray-50/50 border border-gray-100 p-3 rounded-xl">
+            <p class="text-xs font-medium text-gray-500">
+                ¿No tenés una cuenta en Muvix?
+                <a routerLink="/auth/register" class="text-rose-600 font-bold hover:underline transition-all">Registrate
+                    aquí</a>
+            </p>
+        </div>
+
+
+    </div>
+</main>

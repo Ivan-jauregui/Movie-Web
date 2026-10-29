@@ -1,66 +1,66 @@
 <main class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
-    
-    <!-- Botón para volver al catálogo -->
+
+
     <div class="mb-6">
-      <button class="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-rose-600 transition-colors duration-200 group"
-      routerLink="/catalog">
-        <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button
+        class="inline-flex items-center text-sm font-semibold text-gray-500 hover:text-rose-600 transition-colors duration-200 group"
+        routerLink="/catalog">
+        <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Volver al catálogo
       </button>
     </div>
 
-    <!-- Layout Superior de Compra (Estilo Marketplace) -->
+
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      
-      <!-- Bloque Izquierdo y Central: Imagen Principal y Descripción -->
+
+
       <div class="lg:col-span-2 space-y-6">
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-          
+
           <!-- Etiquetas superiores superiores -->
           <div class="flex items-center gap-2 mb-4 text-[11px] font-bold uppercase tracking-wider text-gray-400">
             <span>Colección Coordinada</span>
             <span>•</span>
             <span class="text-gray-600">{{ publication()?.category?.name }}</span>
             @if (publication()?.type === 'LOTE') {
-              <span class="ml-auto bg-rose-50 text-rose-600 px-2 py-0.5 rounded text-[10px] font-extrabold">Verificado</span>
+            <span
+              class="ml-auto bg-rose-50 text-rose-600 px-2 py-0.5 rounded text-[10px] font-extrabold">Verificado</span>
             }
           </div>
 
-          <!-- Título del Artículo -->
+
           <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-6">
             {{ publication()?.title }}
           </h1>
 
-          <!-- Imagen Destacada de la Publicación -->
-          <div class="aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-100 border border-gray-100 flex items-center justify-center relative">
-            <img 
-              [src]="selectedImage() || defaultImg()" 
-              [alt]="publication()?.title" 
-              class="w-full h-full object-cover"
-            />
+
+          <div
+            class="aspect-[10/10] w-full overflow-hidden rounded-xl bg-gray-100 border border-gray-100 flex items-center justify-center relative">
+            <img [src]="selectedImage() || defaultImg()" [alt]="publication()?.title"
+              class="w-full h-full object-cover" />
           </div>
 
           <!-- Listado Dinámico de Miniaturas inferiores (Soporta múltiples imágenes) -->
           @if (publication()?.images && publication()!.images!.length > 1) {
           <div class="grid grid-cols-4 sm:grid-cols-6 gap-3 w-full">
-          
+
             @for (img of publication()?.images; track img.id) {
             <!-- Cambiado a aspect-square (más cuadrado) y el borde dinámico ahora es border-slate-800 (más oscuro y sobrio) -->
             <div class="aspect-square rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-200"
               (click)="selectImage(img.url_images)" [class.border-slate-800]="img.url_images === selectedImage()"
               [class.border-transparent]="img.url_images !== selectedImage()">
-          
+
               <img [src]="img.url_images" class="w-full h-full object-cover">
             </div>
             }
-          
+
           </div>
           }
 
-          <!-- Bloque de Texto de la Descripción -->
           <div class="mt-8 pt-6 border-t border-gray-100 space-y-3">
             <h2 class="text-xs font-bold text-gray-900 tracking-wider uppercase">Descripción del artículo</h2>
             <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
@@ -71,16 +71,16 @@
         </div>
       </div>
 
-      <!-- Bloque Lateral Derecho: Panel de Precios Fijo/Flotante -->
+
+
       <div class="space-y-6 lg:sticky lg:top-6">
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
-          
-          <!-- Encabezado de Precios -->
+
           <div>
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wide">Precio del set completo</span>
               @if (publication()?.type === 'LOTE') {
-                <span class="bg-rose-100 text-rose-700 font-extrabold text-[10px] px-2 py-0.5 rounded">-45% Combo</span>
+              <span class="bg-rose-100 text-rose-700 font-extrabold text-[10px] px-2 py-0.5 rounded">-45% Combo</span>
               }
             </div>
             <div class="flex items-baseline gap-1.5">
@@ -91,62 +91,44 @@
             </div>
           </div>
 
-          <!-- Botones de Compra del Panel -->
           <div class="space-y-2">
-            <button class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200 text-center text-sm tracking-wide">
+            <button
+              class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-sm transition-all duration-200 text-center text-sm tracking-wide">
               Comprar ahora
             </button>
-            <button class="w-full bg-white hover:bg-gray-50 text-gray-700 font-bold py-3 px-4 border border-gray-200 rounded-xl transition-colors duration-200 text-center text-sm">
+            <button
+              class="w-full bg-white hover:bg-gray-50 text-gray-700 font-bold py-3 px-4 border border-gray-200 rounded-xl transition-colors duration-200 text-center text-sm">
               Hacer una oferta
             </button>
           </div>
 
-          <!-- Información complementaria de turnos (Estilo Marketplace de la captura) -->
-          <div class="pt-4 border-t border-gray-100 space-y-3 text-xs">
-            <div class="flex items-center gap-2 text-gray-700 font-bold">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              Turnos de retiro disponibles
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px]">
-              <div class="p-2 border border-gray-100 rounded-lg bg-gray-50/50">
-                <p class="font-bold text-gray-700">Jueves</p>
-                <p class="text-gray-400">10:00 - 14:00 hs</p>
-              </div>
-              <div class="p-2 border border-gray-100 rounded-lg bg-gray-50/50">
-                <p class="font-bold text-gray-700">Viernes</p>
-                <p class="text-gray-400">14:00 - 18:00 hs</p>
-              </div>
-            </div>
-          </div>
+          <!-- Sección de Usuario / Vendedor -->
+          <seller-card [user]="user()"></seller-card>
 
         </div>
+      </div>
+    </div>
+
+
+    @if (publication()?.type === 'LOTE' && associatedPublications().length > 0) {
+    <div class="mt-12 pt-8 border-t border-gray-200">
+
+      <!-- Títulos de Desglose -->
+      <div class="mb-6">
+        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider block mb-1">Desglose de piezas</span>
+        <h2 class="text-2xl font-black text-gray-900 tracking-tight">Contenido detallado del lote</h2>
+      </div>
+
+
+      <div class="flex flex-col gap-4 w-full">
+        @for (associated_publication of associatedPublications(); track associated_publication.id) {
+        <associated-publication-card (onSelect)="viewDetails($event)" [associated_publication]="associated_publication"
+          [index]="$index" [total]="associatedPublications().length">
+        </associated-publication-card>
+        }
       </div>
 
     </div>
-
-    <!-- Sección de Desglose de Piezas Ocupando Todo el Ancho Inferior -->
-    @if (publication()?.type === 'LOTE' && associatedPublications().length > 0) {
-      <div class="mt-12 pt-8 border-t border-gray-200">
-        
-        <!-- Títulos de Desglose -->
-        <div class="mb-6">
-          <span class="text-xs font-bold text-rose-600 uppercase tracking-wider block mb-1">Desglose de piezas</span>
-          <h2 class="text-2xl font-black text-gray-900 tracking-tight">Contenido detallado del lote</h2>
-        </div>
-
-        <!-- Contenedor Lineal Vertical (Stack Vertical de las tarjetas asociadas) -->
-        <div class="flex flex-col gap-4 w-full">
-          @for (associated_publication of associatedPublications(); track associated_publication.id) {
-            <associated-publication-card 
-              (onSelect)="viewDetails($event)"
-              [associated_publication]="associated_publication"
-              [index]="$index"
-              [total]="associatedPublications().length">
-            </associated-publication-card>
-          }
-        </div>
-        
-      </div>
     }
 
   </div>

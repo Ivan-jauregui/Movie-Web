@@ -4,7 +4,7 @@
       "id": "1",
       "title": "Mesa de Comedor de Madera",
       "description": "Mesa robusta de madera maciza para 6 personas.",
-      "price": 350.00,
+      "price": 350,
       "status": "Buen estado",
       "publicationId": 4,
       "category": {
@@ -12,13 +12,14 @@
         "name": "Muebles"
       },
       "type": "INDIVIDUAL",
+      "userId":"1",
       "createdAt": "2026-10-28T21:20:00.000Z"
     },
     {
       "id": "2",
       "title": "Juego de 6 Sillas de Comedor",
       "description": "Sillas tapizadas a juego con la mesa principal.",
-      "price": 180.00,
+      "price": 180,
       "status": "Buen estado",
       "publicationId": 4,
       "category": {
@@ -26,13 +27,14 @@
         "name": "Muebles"
       },
       "type": "INDIVIDUAL",
+      "userId":"1",
       "createdAt": "2026-10-28T21:20:00.000Z"
     },
     {
       "id": "3",
       "title": "Aparador / Vajillero de Madera",
       "description": "Mueble organizador con estantes y puertas de vidrio.",
-      "price": 220.00,
+      "price": 220,
       "status": "Como nuevo",
       "publicationId": 4,
       "category": {
@@ -40,13 +42,14 @@
         "name": "Muebles"
       },
       "type": "INDIVIDUAL",
+      "userId":"1",
       "createdAt": "2026-10-28T21:20:00.000Z"
     },
     {
       "id": "4",
       "title": "Lote Completo de Muebles para Comedor",
       "description": "Combo ideal para renovar tu comedor. Incluye mesa, 6 sillas y aparador combinados.",
-      "price": 680.00,
+      "price": 680,
       "status": "Buen estado",
       "publicationId": null,
       "category": {
@@ -54,6 +57,7 @@
         "name": "Muebles"
       },
       "type": "LOTE",
+      "userId":"1",
       "createdAt": "2026-10-28T21:20:00.000Z"
     }
   ],
@@ -94,5 +98,18 @@
       "esPrincipal": true,
       "publicationId": "4"
     }
-  ]
+  ],
+  
+    "users": [
+      {
+        "photo":"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+        "firstName": "Ivan",
+        "lastName": "Jauregui",
+        "email": "ivanjauregui22@gmail.com",
+        "phoneNumber": "2233009292",
+        "password": "1234",
+        "id": "1"
+      }
+    ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

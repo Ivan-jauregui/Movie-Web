@@ -12,5 +12,6 @@ export interface Publication{
     publicationId:number;
     category:Category;
     type:string;
+    userId?:string;
     createdAt:Date;
 }
