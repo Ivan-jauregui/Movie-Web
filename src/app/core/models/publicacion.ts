@@ -8,6 +8,9 @@ export interface Publication{
     images?: PublicationImages[]; 
     description:string;
     price:number;
+    status:string;
+    publicationId:number;
     category:Category;
+    type:string;
     createdAt:Date;
 }

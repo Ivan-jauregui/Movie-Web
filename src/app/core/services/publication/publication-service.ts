@@ -2,16 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Publication } from '../../models/publicacion';
+import { map } from 'rxjs/operators'; 
 
 @Injectable({
   providedIn: 'root'
 })
-export class PublicationService{
+export class PublicationService {
   private http = inject(HttpClient);
-  private apiUrl="http://localhost:3000/publications";
+  private apiUrl = "http://localhost:3000/publications";
 
-  save(req:Publication):Observable<Publication>{
-    return this.http.post<Publication>(this.apiUrl,req)
+  save(req: Publication): Observable<Publication> {
+    return this.http.post<Publication>(this.apiUrl, req)
   }
 
   getAll(): Observable<Publication[]> {
@@ -23,4 +24,9 @@ export class PublicationService{
     return this.http.get<Publication>(`${this.apiUrl}/${id}?_embed=images`);
   }
 
+  getPublicationsByBatchId(id: number): Observable<Publication[]> {
+    return this.getAll().pipe(
+      map((data: Publication[]) => data.filter(p => p.publicationId === id))
+    );
+  }
 }

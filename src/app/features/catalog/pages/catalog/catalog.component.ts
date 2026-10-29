@@ -35,7 +35,7 @@ export class CatalogComponent {
   // Publicacion por parámetro
   getMainImageUrl(publication: Publication): string {
     const images = publication?.images;
-    if (!images || images.length === 0) return 'assets/no-image.png';
+    if (!images || images.length === 0) return 'assets/no-image.jpg';
 
     // Busca la principal, si no existe, agarra la primera del array
     const principal = images.find((img: PublicationImages) => img.esPrincipal);

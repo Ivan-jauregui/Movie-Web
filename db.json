@@ -2,39 +2,97 @@
   "publications": [
     {
       "id": "1",
-      "title": "Controlador MIDI Novation",
-      "description": "Controlador MIDI de 49 teclas en perfecto estado.",
-      "price": 250.00,
+      "title": "Mesa de Comedor de Madera",
+      "description": "Mesa robusta de madera maciza para 6 personas.",
+      "price": 350.00,
+      "status": "Buen estado",
+      "publicationId": 4,
       "category": {
-        "id": 3,
-        "name": "Instrumentos Musicales"
+        "id": 5,
+        "name": "Muebles"
       },
-      "createdAt": "2026-10-23T19:55:00.000Z"
+      "type": "INDIVIDUAL",
+      "createdAt": "2026-10-28T21:20:00.000Z"
     },
     {
       "id": "2",
-      "title": "Auriculares de Estudio",
-      "description": "Auriculares cerrados profesionales para monitoreo.",
-      "price": 120.50,
+      "title": "Juego de 6 Sillas de Comedor",
+      "description": "Sillas tapizadas a juego con la mesa principal.",
+      "price": 180.00,
+      "status": "Buen estado",
+      "publicationId": 4,
       "category": {
-        "id": 1,
-        "name": "Audio"
+        "id": 5,
+        "name": "Muebles"
       },
-      "createdAt": "2026-10-22T14:30:00.000Z"
+      "type": "INDIVIDUAL",
+      "createdAt": "2026-10-28T21:20:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "Aparador / Vajillero de Madera",
+      "description": "Mueble organizador con estantes y puertas de vidrio.",
+      "price": 220.00,
+      "status": "Como nuevo",
+      "publicationId": 4,
+      "category": {
+        "id": 5,
+        "name": "Muebles"
+      },
+      "type": "INDIVIDUAL",
+      "createdAt": "2026-10-28T21:20:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "Lote Completo de Muebles para Comedor",
+      "description": "Combo ideal para renovar tu comedor. Incluye mesa, 6 sillas y aparador combinados.",
+      "price": 680.00,
+      "status": "Buen estado",
+      "publicationId": null,
+      "category": {
+        "id": 5,
+        "name": "Muebles"
+      },
+      "type": "LOTE",
+      "createdAt": "2026-10-28T21:20:00.000Z"
     }
   ],
   "images": [
     {
       "id": "1",
-      "url_images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtHqg5mvRj3fxGE7ha1NVE-iJm4JDc0f8g6-4-Cs2MA&s",
+      "url_images": "https://i.pinimg.com/736x/f0/93/12/f09312f59304e03f1d3e8d14da48950f.jpg",
       "esPrincipal": true,
       "publicationId": "1"
     },
     {
       "id": "2",
-      "url_images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtHqg5mvRj3fxGE7ha1NVE-iJm4JDc0f8g6-4-Cs2MA&s",
+      "url_images": "https://i.pinimg.com/736x/5a/7a/d6/5a7ad61df9a706ff2bacde4470d2f52d.jpg",
       "esPrincipal": true,
       "publicationId": "2"
+    },
+    {
+      "id": "3",
+      "url_images": "https://i.pinimg.com/1200x/6c/d1/c8/6cd1c871cac9057387ff1f12b2992b95.jpg",
+      "esPrincipal": true,
+      "publicationId": "2"
+    },
+    {
+      "id": "4",
+      "url_images": "https://i.pinimg.com/736x/83/d7/48/83d748fff80d2541fdf85d55ff2f93ed.jpg",
+      "esPrincipal": true,
+      "publicationId": "2"
+    },
+    {
+      "id": "5",
+      "url_images": "https://i.pinimg.com/736x/61/1e/e0/611ee0fc103510c108987efd46e53078.jpg",
+      "esPrincipal": true,
+      "publicationId": "3"
+    },
+    {
+      "id": "6",
+      "url_images": "https://i.pinimg.com/1200x/9a/6e/60/9a6e6006e6d3a9372f6ca9402b862fc0.jpg",
+      "esPrincipal": true,
+      "publicationId": "4"
     }
   ]
 }
